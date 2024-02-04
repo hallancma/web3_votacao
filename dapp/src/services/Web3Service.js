@@ -1,7 +1,7 @@
 import Web3 from "web3";
 import ABI from "./ABI.json";
 
-const CONTRACT_ADRESS = "0xa3f84259971d9dBeb7f91fbE91231fb6Fae3ec6e";
+const CONTRACT_ADRESS = "0xe4E46fEc88EB7e58be65FA68c6CddE7B5fF3215D";
 //
 
 export async function doLogin(){
@@ -14,12 +14,21 @@ export async function doLogin(){
   return accounts[0];
 }
 
-export async function getCurrentVoting(){
+function getContract(){
   const wallet = localStorage.getItem('wallet');
   if(!wallet) throw new Error("Unauthorized.");
 
   const web3 = new Web3(window.ethereum);
-  const contract = new web3.eth.Contract(ABI,CONTRACT_ADRESS, { from: wallet});
+  return new web3.eth.Contract(ABI,CONTRACT_ADRESS, { from: wallet});
+}
+
+export async function getCurrentVoting(){
+  const contract = getContract();
   return contract.methods.getCurrentVoting().call();
 
+}
+
+export async function addVote(choice){
+  const contract = getContract();
+  return contract.methods.addVote(choice).send();
 }

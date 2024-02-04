@@ -40,7 +40,7 @@ export default function Home() {
                   <img src="./metamask.svg" width="64" alt="" className="me-3" />
                   Conectar com a MetaMask
                 </button>
-                <p className="message">{message}</p>
+               <p className="message">{message}</p> 
               </div>
           </div>
         </div>
@@ -49,9 +49,6 @@ export default function Home() {
           <ul className="nav col-md-4 justify-content-end">
             <li className="nav-item">
               <a href="/" className="nav-link px-2 text-body-secundary">Home</a>
-            </li>
-            <li className="nav-item">
-              <a href="/about" className="nav-link px-2 text-body-secundary">About</a>
             </li>
           </ul>
         </footer>
